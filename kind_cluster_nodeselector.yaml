@@ -1,0 +1,22 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 30950
+  labels:
+    app: whome
+  extraMounts:
+  - hostPath: /var/www/TestApp1
+    containerPath: /app
+- role: worker
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 30951
+  labels:
+    app: helloworld
+  extraMounts:
+  - hostPath: /var/www/TestApp
+    containerPath: /app
